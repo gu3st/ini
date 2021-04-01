@@ -320,6 +320,7 @@ func (f *File) Append(source interface{}, others ...interface{}) error {
 	return f.Reload()
 }
 
+
 func (f *File) writeToBuffer(indent string) (*bytes.Buffer, error) {
 	equalSign := DefaultFormatLeft + f.options.KeyValueDelimiterOnWrite + DefaultFormatRight
 
@@ -331,7 +332,7 @@ func (f *File) writeToBuffer(indent string) (*bytes.Buffer, error) {
 	buf := bytes.NewBuffer(nil)
 	for i, sname := range f.sectionList {
 		sec := f.SectionWithIndex(sname, f.sectionIndexes[i])
-		if len(sec.Comment) > 0 {
+		if len(sec.Comment) > 0 && !f.options.WriteInlineComment{
 			// Support multiline comments
 			lines := strings.Split(sec.Comment, LineBreak)
 			for i := range lines {

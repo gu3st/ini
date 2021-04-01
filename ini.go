@@ -67,6 +67,8 @@ func init() {
 
 // LoadOptions contains all customized options used for load data source(s).
 type LoadOptions struct {
+	// WriteInlineComment instructs comments to be written inline
+	WriteInlineComment bool
 	// Loose indicates whether the parser should ignore nonexistent files or return error.
 	Loose bool
 	// Insensitive indicates whether the parser forces all section and key names to lowercase.
